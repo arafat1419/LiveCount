@@ -217,6 +217,13 @@
                     <p>Videos</p>
                 </div>
             </section>
+
+            <section class="additional-stats">
+                <div>
+                    <p>Comment</p>
+                    <h2>Siiiuuuu</h2>
+                </div>
+            </section>
         </div>
 
         <!-- Right Scene -->
@@ -238,6 +245,13 @@
                 <div>
                     <h2 id="youtubers-videos">0</h2>
                     <p>Videos</p>
+                </div>
+            </section>
+
+            <section class="additional-stats">
+                <div>
+                    <p>Next Youtubers</p>
+                    <h2 id="youtubers-next">-</h2>
                 </div>
             </section>
         </div>
@@ -457,6 +471,13 @@
                     const nameElement = document.getElementById(`${prefix}-name`);
                     const profileElement = document.getElementById(`${prefix}-profile`);
                     const backgroundElement = document.querySelector('.scene:last-child');
+
+                    const nextYoutubersElement = document.getElementById(`youtubers-next`);
+                    if (currentYoutuberIndex == 0) {
+                        nextYoutubersElement.textContent = "-";
+                    } else {
+                        nextYoutubersElement.textContent = youtubersList[currentYoutuberIndex - 1].name;
+                    }
 
                     const newSubscribers = data.followerCount.toLocaleString();
                     const newViews = data.bottomOdos[0].toLocaleString();
