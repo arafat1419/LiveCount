@@ -60,7 +60,7 @@
         }
 
         .scene:last-child {
-            background-image: url('https://ca.shopatshowcase.com/cdn/shop/collections/MrBeast-CollectionBanner-1023_597c767b-45c9-4f7a-b298-4a1de91d6655.jpg?v=1704920247');
+            background-image: url('');
             /* Replace with your right scene background image URL */
         }
 
@@ -186,7 +186,7 @@
 <body>
 
     <div class="title">
-        <h1>UR · Cristiano vs MrBeast</h1>
+        <h1>UR · Cristiano vs Top 30 Youtubers</h1>
         <br>
         <h3>
             <div class="recording-icon"></div>
@@ -216,37 +216,28 @@
                     <h2 id="cristiano-videos">0</h2>
                     <p>Videos</p>
                 </div>
-                <div>
-                    <h2 id="cristiano-goal">0</h2>
-                    <p>Goal</p>
-                </div>
             </section>
         </div>
 
         <!-- Right Scene -->
-        <div class="scene" id="mrbeast">
+        <div class="scene" id="youtubers">
             <section class="stats">
-                <img src="https://yt3.ggpht.com/fxGKYucJAVme-Yz4fsdCroCFCrANWqw0ql4GYuvx8Uq4l_euNJHgE-w9MTkLQA805vWCi-kE0g=s240-c-k-c0x00ffffff-no-rj"
-                    alt="Avatar">
-                <h2>MrBeast</h2>
+                <img src="" alt="Avatar" id="youtubers-profile">
+                <h2 id="youtubers-name">-</h2>
                 <div class="subscriber">
-                    <h1 id="mrbeast-subscribers">0</h1>
+                    <h1 id="youtubers-subscribers">0</h1>
                     <p>Subscribers</p>
                 </div>
             </section>
 
             <section class="additional-stats">
                 <div>
-                    <h2 id="mrbeast-views">0</h2>
+                    <h2 id="youtubers-views">0</h2>
                     <p>Channel Views</p>
                 </div>
                 <div>
-                    <h2 id="mrbeast-videos">0</h2>
+                    <h2 id="youtubers-videos">0</h2>
                     <p>Videos</p>
-                </div>
-                <div>
-                    <h2 id="mrbeast-goal">0</h2>
-                    <p>Goal</p>
                 </div>
             </section>
         </div>
@@ -260,8 +251,200 @@
     </div>
 
     <script>
-        // Function to fetch and update data
-        // Fetch and update data with subscriber difference
+        var youtubersList = [
+            {
+                background: 'https://ca.shopatshowcase.com/cdn/shop/collections/MrBeast-CollectionBanner-1023_597c767b-45c9-4f7a-b298-4a1de91d6655.jpg?v=1704920247',
+                profile: 'https://yt3.ggpht.com/fxGKYucJAVme-Yz4fsdCroCFCrANWqw0ql4GYuvx8Uq4l_euNJHgE-w9MTkLQA805vWCi-kE0g=s240-c-k-c0x00ffffff-no-rj',
+                name: 'Mr.Beast',
+                id: 'UCX6OQ3DkcsbYNE6H8uQQuVA'
+            },
+            {
+                background: 'https://yt3.googleusercontent.com/h2yvpqGaURhsMKWE7fbjl6iARFeqX46CDLi_R7cIkTx8w1LkC5OKzE-suL3VVJAbmrDtULpe=w2560-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj',
+                profile: 'https://yt3.googleusercontent.com/XE7Iq8jvJ07ptMc-HxZR_V-2XgXCb0i06i4E_dypl7xSR655WXaQeglfqNuEeuwH3oM9RKVodQ=s160-c-k-c0x00ffffff-no-rj',
+                name: 'T-Series',
+                id: 'UCq-Fj5jknLsUf-MWSy4_brA'
+            },
+            {
+                background: 'https://yt3.googleusercontent.com/7bzIrPE03JW5RXNVlgnCf3BtvYrIXy7LyB8vJ8qUZNSQkZfCOdgNLONxdjTtfkJ7dmyQJKNS=w2560-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj',
+                profile: 'https://yt3.googleusercontent.com/ytc/AIdro_m_9r5XDMjVGrjdZm4A0qHb8D6FH8rehXDbaM9rlDeaNz0=s160-c-k-c0x00ffffff-no-rj',
+                name: 'Cocomelon - Nursery Rhymes',
+                id: 'UCbCmjCuTUZos6Inko4u57UQ'
+            },
+            {
+                background: 'https://yt3.googleusercontent.com/VP2khIloUWxRt3erLMywrEUP10m-6iedaSaf8xF9gZsZ1H7m0AG8vESSH1Gnq_vfQJcA1vRpag=w2560-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj',
+                profile: 'https://yt3.googleusercontent.com/eu051krrRNQMMi5h6ynfnvhFJzxzSKulJQ42g5v72MQ9Bvv8KdpNIa6yM-0iGpnDgSF0itAD=s160-c-k-c0x00ffffff-no-rj',
+                name: 'SET India',
+                id: 'UCpEhnqL0y41EpW2TvWAHD7Q'
+            },
+            {
+                background: 'https://yt3.googleusercontent.com/wqujDh1R0G4UxNgKr7Z5RK1XAbGXZh1B9sO0EZsuDdQxAt3xLNbyCVeU5Dy77AB3O8PzpIOfCA=w2560-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj',
+                profile: 'https://yt3.googleusercontent.com/ytc/AIdro_nXPizlWeJZGOjnuokCFpcn1T38xLKSJnqSt14HfDtR1r0=s160-c-k-c0x00ffffff-no-rj',
+                name: '✿ Kids Diana Show',
+                id: 'UCk8GzjMOrta8yxDcKfylJYw'
+            },
+            {
+                background: 'https://yt3.googleusercontent.com/A5wI-aLeCtzXJlNDnPSy3IYVbkuWC0NGuE6BdFPhILfbvwRiCnTZSlbWh7eRqQDjAQo-fDN_FQ=w2560-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj',
+                profile: 'https://yt3.googleusercontent.com/RlnpUc0SBCmYvseTqUqAfYeyHw0nHcmqQIVS0vMcTKpk3gQAY0ZZY1JpUxxjLPAYROhDYKub=s160-c-k-c0x00ffffff-no-rj',
+                name: 'Vlad and Niki',
+                id: 'UCvlE5gTbOvjiolFlEm-c_Ow'
+            },
+            {
+                background: 'https://yt3.googleusercontent.com/h4TKlUhYPvtW0UMN35FePXqZ5r-Sx3AEFnsyuACYeITyCCcVFgonO3vble98ZTni6Ygyz5aahek=w2560-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj',
+                profile: 'https://yt3.googleusercontent.com/ytc/AIdro_kj6ASR_jV8XSSGF_SSD4hUBJInCWwWRlR2mxEcwGVQW4s=s160-c-k-c0x00ffffff-no-rj',
+                name: 'Like Nastya',
+                id: 'UCJplp5SjeGSdVdwsfb9Q7lQ'
+            },
+            {
+                background: 'https://yt3.googleusercontent.com/82q_54Y1P3uTo9hVWV82rIE_O_j4cZUaB_wFq_4LKcteG72IEaDqBsuoXarUA35osaFX6q-0=w2560-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj',
+                profile: 'https://yt3.googleusercontent.com/5oUY3tashyxfqsjO5SGhjT4dus8FkN9CsAHwXWISFrdPYii1FudD4ICtLfuCw6-THJsJbgoY=s160-c-k-c0x00ffffff-no-rj',
+                name: 'PewDiePie',
+                id: 'UC-lHJZR3Gqxm24_Vd_AJ5Yw'
+            },
+            {
+                background: 'https://yt3.googleusercontent.com/NbPWUr0xC88PuW5Dgr0z0OVO4sWwpgicQXS7_dr3Hn_480H2rU0zQZFeeYgmub9utWokrOLk=w2560-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj',
+                profile: 'https://yt3.googleusercontent.com/5ozNNrQBUJY8TPt2BYo6fEL-07ilkWHVedWCGFjtvuHU0aYrg1Iop-LJvprodA1_9-MTv7G_YA=s160-c-k-c0x00ffffff-no-rj',
+                name: 'Zee Music Company',
+                id: 'UCFFbwnve3yF62-tVXkTyHqg'
+            },
+            {
+                background: 'https://yt3.googleusercontent.com/0n5xfpseA0_ymavIHKGCqbq8T29hW1kFac7OR-m0fqWwNdlI7aCOhtIatOBOOE4rSKyVi-1sL5c=w2560-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj',
+                profile: 'https://yt3.googleusercontent.com/ytc/AIdro_mzpGZgfhPoWaAukjvffGYTwdJj2bNIcm6ocNZ_yhB-bbWY=s160-c-k-c0x00ffffff-no-rj',
+                name: 'WWE',
+                id: 'UCJ5v_MCY6GNUBTO8-D3XoAg'
+            },
+            {
+                background: 'https://yt3.googleusercontent.com/PWQ4s-giPuale6cyaonkJ_ABA6YqQwhm90MoHVTz05OaRXlg_JWfu4zRSoaZZYKJ83Ph3k_QaQ=w2560-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj',
+                profile: 'https://yt3.googleusercontent.com/wblvtoHFXpBoat-oNukycB5auBa45inSwiyghE8gac3MN_ridYgeY1kHRKCkBrb1slgpIlO6Vw=s160-c-k-c0x00ffffff-no-rj',
+                name: 'Goldmines',
+                id: 'UCyoXW-Dse7fURq30EWl_CUA'
+            },
+            {
+                background: 'https://yt3.googleusercontent.com/o6yews98er-GT7b83RWh0dPWAbxWaEqA1-uvx71438tXSRcgfso1aqDERQ5ZCEhVtuHI4Jnk3w=w2560-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj',
+                profile: 'https://yt3.googleusercontent.com/WrjDeIWr2pmRdCKFuEDfvkovr0O_o7gyfT_J_AMJjFk5KR9HGQVirOP0DeimyAoBUHRfH79X=s160-c-k-c0x00ffffff-no-rj',
+                name: 'Sony SAB',
+                id: 'UC6-F5tO8uklgE9Zy8IvbdFw'
+            },
+            {
+                background: 'https://yt3.googleusercontent.com/row-h15pUxGppKyqXiHAkjsnIyvGeAwxacIhNwBhf3qNw0aD0upnplIEpSeCaBdGx_xuz82W6w=w2560-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj',
+                profile: 'https://yt3.googleusercontent.com/EMHEc8vNqHUC-eBFl_RrLcla7_NH6hEohpi0RrMABe6cOcmCabmnxcqfVFmONWTQg5LtbpNkQg=s160-c-k-c0x00ffffff-no-rj',
+                name: 'BLACKPINK',
+                id: 'UCOmHUn--16B90oW2L6FRR3A'
+            },
+            {
+                background: 'https://yt3.googleusercontent.com/hWs98a7nHvHm8j-PDcJA0Zj4_hfiF8y5a2mvoFH7iCN4Wo-ugg_d2aPT-_ttTqy-DGV9BZcwjbY=w2560-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj',
+                profile: 'https://yt3.googleusercontent.com/GgxGEqkXf9x_ka5Ohgh3ZSUTRHZ4omOpneM4ZbHcbK8JIQOffbNYut1I3m3jDhsUo_N0C4yw=s160-c-k-c0x00ffffff-no-rj',
+                name: 'ChuChu TV Nursery Rhymes & Kids Songs',
+                id: 'UCBnZ16ahKA2DZ_T5W0FPUXg'
+            },
+            {
+                background: 'https://yt3.googleusercontent.com/uCwvV2elIhTg0laTEMbcEVI15DVm__e-0Bv2cPHLYiYQeevKf71zBLXiRMcZXkjwj_JwtEaf2g=w2560-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj',
+                profile: 'https://yt3.googleusercontent.com/ytc/AIdro_lEVTRi3Hf-Jdhk2Fd6BGFygFjiTYT7yA7eOsNTzM4uWVY=s160-c-k-c0x00ffffff-no-rj',
+                name: 'Stokes Twins',
+                id: 'UCbp9MyKCTEww4CxEzc_Tp0Q'
+            },
+            {
+                background: 'https://yt3.googleusercontent.com/4KfUzXn6oM4hn7vU-hG_sbLjURSSaI8WdhA1YAMTbigaJGIIzjvL2FsiV4W8KEjKpiD7g7UXXg=w2560-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj',
+                profile: 'https://yt3.googleusercontent.com/ytc/AIdro_m-L8IIsyEqs4mhPYoMXDhegVmWOun3S0jMuT8SXOtZpqU=s160-c-k-c0x00ffffff-no-rj',
+                name: 'Zee TV',
+                id: 'UCppHT7SZKKvar4Oc9J4oljQ'
+            },
+            {
+                background: 'https://yt3.googleusercontent.com/Mng-DTw6-IFSPP-1LuAtVSNUHYIchh96A3sIg4dxX468c4CrQgSM_LUxocvmrjTPO0-Sz9A_=w2560-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj',
+                profile: 'https://yt3.googleusercontent.com/rrMcZWXHcMJ-GikSl3uEmB2gwu9uWg4gbgvI4_tFcNEkc5ys2emF0Oz6733mDVdaxz2jQ07xzQ=s160-c-k-c0x00ffffff-no-rj',
+                name: '5-Minute Crafts',
+                id: 'UC295-Dw_tDNtZXFeAPAW6Aw'
+            },
+            {
+                background: 'https://yt3.googleusercontent.com/FXHQqy4EAmXvEMJyrZb_Z4yocitS_Xg-_9AsFWRxr-WGTQsS5t-TPsRVqVm92rAhjybqdzzfmw=w2560-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj',
+                profile: 'https://yt3.googleusercontent.com/zL7KDS7WEHVbgpo6dM91hL5e91etHiuq2umW32iSePrhE5411SPsEdpAEcf5m5mYS-a_vpl7Ww=s160-c-k-c0x00ffffff-no-rj',
+                name: 'BANGTANTV',
+                id: 'UCLkAepWjdylmXSltofFvsYQ'
+            },
+            {
+                background: 'https://yt3.googleusercontent.com/jlCzKMAk1Ig3ltO49AN5689MHLx-kNoqTHEmYcgnLXzNqo5jBp-V2DZrRDtMGoA6yCZFqZzt1w=w2560-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj',
+                profile: 'https://yt3.googleusercontent.com/1cyrOm4Y6f959LIjhE2Zwqp77Lts6P_nCBCv0uRsMWTd-JYYY7TBXztNM52G7pJYzk-8g3AS9Nc=s160-c-k-c0x00ffffff-no-rj',
+                name: 'Baby Shark - Pinkfong Kids’ Songs & Stories',
+                id: 'UCcdwLMPsaU2ezNSJU1nFoBQ'
+            },
+            {
+                background: 'https://yt3.googleusercontent.com/AgaAy56OcOTNWBBIVO_ZrOJO-mm0ZuUEllsKiQ_Yt3XNQZAlCXkQ0ZXuD08ta-v96pVGmpV_=w2560-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj',
+                profile: 'https://yt3.googleusercontent.com/ytc/AIdro_ldT8kWzx6T1Q7LQL4ENvkeCGjFP6hUzWgHSVtjddJ5Ib0=s160-c-k-c0x00ffffff-no-rj',
+                name: 'HYBE LABELS',
+                id: 'UC3IZKseVpdzPSBaWxBxundA'
+            },
+            {
+                background: 'https://yt3.googleusercontent.com/7xWm6JboK3XLXTTEbHLHFRpf2o_s70gB87pofVma23PL-1Pp082pO7zy8M36ZJd2pAW5uQvQ=w2560-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj',
+                profile: 'https://yt3.googleusercontent.com/ytc/AIdro_n4i1tIumogB43LYQ_b_nE1g8jxW1kEv0REdQ-IrdmO_m8=s160-c-k-c0x00ffffff-no-rj',
+                name: 'Justin Bieber',
+                id: 'UCIwFjwMjI0y7PDBVEO9-bkQ'
+            },
+            {
+                background: 'https://yt3.googleusercontent.com/plz_0EeCL3JVLOBCuW-4mfD_D1RNe4GnTGqWC0fKwJstH_gEDVuHmXrEvuKx2CKzvtriIJgkbhk=w2560-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj',
+                profile: 'https://yt3.googleusercontent.com/dKBpjdqRkmSJqqLUybd9iygGh1iyZgqEkqVDaYaFvrs0ZO93bbVq00L4TQH2XabJYOq1Igp1QA=s160-c-k-c0x00ffffff-no-rj',
+                name: 'Shemaroo Filmi Gaane',
+                id: 'UCP6uH_XlsxrXwZQ4DlqbqPg'
+            },
+            {
+                background: 'https://yt3.googleusercontent.com/ztxzNTGS_7QY7YwMvTu3TpdxsZEYbb8MR5hJ6ZgDQ2MpO11RTHZpJEXbUE3p8W8FjBSW390TwQ=w2560-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj',
+                profile: 'https://yt3.googleusercontent.com/ytc/AIdro_lEOsOKSwfkzCB5bj1mTBIKOG7rBJmipaGnWMtcUnEF0I6J=s160-c-k-c0x00ffffff-no-rj',
+                name: 'T-Series Bhakti Sagar',
+                id: 'UCaayLD9i5x4MmIoVZxXSv_g'
+            },
+            {
+                background: 'https://yt3.googleusercontent.com/hfwCPqXwP--MP-tXHL1WbqgrZU-iWqy6493QSKW2cPRTxBBVLlo6HcUmAQGxU-epmbswKbAe=w2560-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj',
+                profile: 'https://yt3.googleusercontent.com/gcBSD5XoYEKAs7Y-_3im6BX35R_hajtbe2p_Rl3ZYZe_H_4eu2Yv1f-FtI-GTMPKFz4cSUrt=s160-c-k-c0x00ffffff-no-rj',
+                name: 'Tips Official',
+                id: 'UCJrDMFOdv1I2k8n9oK_V21w'
+            },
+            {
+                background: 'https://yt3.googleusercontent.com/NENb1-5iw3D65YlkjYFmH3qeqxArQjtVC85SMpg_-y3v8w-SBcM8DSwKhTSOGyODX1E7cDqIfg=w2560-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj',
+                profile: 'https://yt3.googleusercontent.com/b3nRDgoomGiaTDfpro0h564ZyRp4gGJrBKo4v0KbUU64RUr5XOrbKTESbKtw5v0J2bu1C9qJpHg=s160-c-k-c0x00ffffff-no-rj',
+                name: 'Canal KondZilla',
+                id: 'UCffDXn7ycAzwL2LDlbyWOTw'
+            },
+            {
+                background: 'https://yt3.googleusercontent.com/2HmWe179kt1bcdI-p-GBJ5Xcj5Ct1vZCpSyvrV45dr7wRP8GZPx1z8ds4O2PGj4w131ifcfT1g=w2560-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj',
+                profile: 'https://yt3.googleusercontent.com/ytc/AIdro_m1WLxquYeEO9VgyA7-cYFrn_hd2dSaNtmL8-NIHMCQIuPQ=s160-c-k-c0x00ffffff-no-rj',
+                name: 'Aaj Tak',
+                id: 'UCt4t-jeY85JegMlZ-E5UWtA'
+            },
+            {
+                background: 'https://yt3.googleusercontent.com/bHbS02-7yiYhETCIU2HTFSGY7Lk_2v5-iZdBc9fdg-5j1vZNLgAcTYuRyLU1QhvbshZuLS6Vow=w2560-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj',
+                profile: 'https://yt3.googleusercontent.com/ytc/AIdro_mk6Xxg1oOs7PVOv4rkdt7SUxyRixyVK4P-lcnhAsCzdnk=s160-c-k-c0x00ffffff-no-rj',
+                name: 'A4',
+                id: 'UC2tsySbe9TNrI-xh2lximHA'
+            },
+            {
+                background: 'https://yt3.googleusercontent.com/rqYH-NkhJlmh5KG87xSiv-fAFSUcrlye0uFGMi9yOk2TXZH_OwBFJ1zgdzah8dBwEa76bP6n=w2560-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj',
+                profile: 'https://yt3.googleusercontent.com/mfVNqCAHQK6a9n16YJkfM9WQuwgoG9CXNqDYanO5j-pY2YSQEsnFWT10QivCgrBgLpj432Zx21k=s160-c-k-c0x00ffffff-no-rj',
+                name: 'El Reino Infantil',
+                id: 'UCK1i2UviaXLUNrZlAFpw_jA'
+            },
+            {
+                background: 'https://yt3.googleusercontent.com/Le1CxWErYTz1Q2i91gYkt5xj75dWIOGwwVyzKN_KCHe_ywgYoWSm35EooZjroZ4UZ_A0d46UsQ=w2560-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj',
+                profile: 'https://yt3.googleusercontent.com/ytc/AIdro_mWKlOUcsnrq8oXV8BemcuyrfG52ztaqZmoDThFc1v-etg=s160-c-k-c0x00ffffff-no-rj',
+                name: 'Infobells - Hindi',
+                id: 'UC1ciY6kR3yj3kaKZ6R7ewAg'
+            },
+            {
+                background: 'https://yt3.googleusercontent.com/Gdfrnb6oL0jWxKgHO7nO7Fkfvj8PHDfy2_vmpfdw0I__Ej5FFHrQ12ALy9K6UqDzNdHwu-iQ=w2560-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj',
+                profile: 'https://yt3.googleusercontent.com/WWGrjtclzFB8SATRGBf6uCeBK_o0zVvZfD4YKrYSrKSaXaeapPwMozQoh3rcH9OgQb9JSejyiQ=s160-c-k-c0x00ffffff-no-rj',
+                name: 'ZAMZAM ELECTRONICS TRADING',
+                id: 'UCrnQFuUabBHaw-BRhPo8xEA'
+            },
+            {
+                background: 'AAAA',
+                profile: 'AAAA',
+                name: 'Katy Perry',
+                id: 'UCYvmuw-JtVrTZQ-7Y4kd63Q'
+            },
+        ];
+
+        console.log(youtubersList.length)
+
+        var currentYoutuberIndex = youtubersList.length - 1;
+        var isUpdating = false;
+
         async function fetchAndUpdateData(id, prefix) {
             try {
                 const response = await fetch(`http://localhost:3000/proxy/${id}`);
@@ -271,31 +454,49 @@
                     const subscriberElement = document.getElementById(`${prefix}-subscribers`);
                     const viewsElement = document.getElementById(`${prefix}-views`);
                     const videosElement = document.getElementById(`${prefix}-videos`);
-                    const goalElement = document.getElementById(`${prefix}-goal`);
+                    const nameElement = document.getElementById(`${prefix}-name`);
+                    const profileElement = document.getElementById(`${prefix}-profile`);
+                    const backgroundElement = document.querySelector('.scene:last-child');
 
                     const newSubscribers = data.followerCount.toLocaleString();
                     const newViews = data.bottomOdos[0].toLocaleString();
                     const newVideos = data.bottomOdos[1].toLocaleString();
-                    const newGoal = data.bottomOdos[2].toLocaleString();
 
                     // Animate the values
                     const animationDuration = 1000;
                     animateValue(`${prefix}-subscribers`, subscriberElement.textContent, newSubscribers, animationDuration);
                     animateValue(`${prefix}-views`, viewsElement.textContent, newViews, animationDuration);
                     animateValue(`${prefix}-videos`, videosElement.textContent, newVideos, animationDuration);
-                    animateValue(`${prefix}-goal`, goalElement.textContent, newGoal, animationDuration);
 
-                    // Calculate the subscriber difference
-                    const cristianoSubscribers = parseInt(document.getElementById('cristiano-subscribers').textContent.replace(/,/g, ''));
-                    const mrbeastSubscribers = parseInt(document.getElementById('mrbeast-subscribers').textContent.replace(/,/g, ''));
-                    const difference = Math.abs(cristianoSubscribers - mrbeastSubscribers);
-                    const differenceElement = document.getElementById('subscriber-difference');
-                    console.log(`${cristianoSubscribers} - ${mrbeastSubscribers} = ${difference}`);
+                    if (prefix === 'cristiano') {
+                        const youtubersSubscribers = parseInt(document.getElementById('youtubers-subscribers').textContent.replace(/,/g, ''));
+                        const cristianoSubscribers = parseInt(newSubscribers.replace(/,/g, ''));
+                        const difference = cristianoSubscribers - youtubersSubscribers;
 
-                    const value = (cristianoSubscribers - mrbeastSubscribers >= 0) ? "" : "-";
+                        if (difference > 0 && !isUpdating) {
+                            currentYoutuberIndex--;
+                            if (currentYoutuberIndex >= 0) {
+                                updateAllData();
+                            }
+                        }
+                    } else {
+                        nameElement.textContent = youtubersList[currentYoutuberIndex].name;
+                        profileElement.src = youtubersList[currentYoutuberIndex].profile;
+                        backgroundElement.style.backgroundImage = `url(${youtubersList[currentYoutuberIndex].background})`;
 
-                    // Animate the difference value
-                    animateValue('subscriber-difference', differenceElement.textContent, `${value}${difference.toLocaleString()}`, animationDuration);
+                        const cristianoSubscribers = parseInt(document.getElementById('cristiano-subscribers').textContent.replace(/,/g, ''));
+                        const youtubersSubscribers = parseInt(newSubscribers.replace(/,/g, ''));
+                        const difference = Math.abs(cristianoSubscribers - youtubersSubscribers);
+                        const differenceElement = document.getElementById('subscriber-difference');
+
+                        console.log(`${cristianoSubscribers} - ${youtubersSubscribers} = ${difference}`);
+
+                        const value = (cristianoSubscribers - youtubersSubscribers >= 0) ? "" : "-";
+                        animateValue('subscriber-difference', differenceElement.textContent, `${value}${difference.toLocaleString()}`, animationDuration);
+
+                        isUpdating = false;
+                    }
+
                 } else {
                     console.error('API response was not successful');
                 }
@@ -303,8 +504,6 @@
                 console.error('Error fetching data:', error);
             }
         }
-
-
 
         function animateValue(id, start, end, duration) {
             var obj = document.getElementById(id);
@@ -334,17 +533,29 @@
             run();
         }
 
+        async function updateAllData() {
+            try {
+                isUpdating = true;
+                // Run both fetchAndUpdateData calls concurrently
+                await Promise.all([
+                    fetchAndUpdateData('UCtxD0x6AuNNqdXO9Wp5GHew', 'cristiano'),
+                    fetchAndUpdateData(youtubersList[currentYoutuberIndex].id, 'youtubers')
+                ]);
+            } catch (error) {
+                console.error('Error updating data:', error);
+            }
+        }
 
         // Fetch data initially
-        fetchAndUpdateData('UCtxD0x6AuNNqdXO9Wp5GHew', 'cristiano');
-        fetchAndUpdateData('UCX6OQ3DkcsbYNE6H8uQQuVA', 'mrbeast');
+        updateAllData();
 
         // Set an interval to update data every 2 seconds
         setInterval(() => {
-            fetchAndUpdateData('UCtxD0x6AuNNqdXO9Wp5GHew', 'cristiano');
-            fetchAndUpdateData('UCX6OQ3DkcsbYNE6H8uQQuVA', 'mrbeast');
-        }, 2000); // 2000 milliseconds = 2 seconds
+            updateAllData();
+        }, 2000);
     </script>
+
+
 
 </body>
 
